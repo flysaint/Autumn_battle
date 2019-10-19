@@ -84,9 +84,9 @@ def pretty_print(tree):
                     current_level, next_level = next_level, current_level
                     depth = depth + 1
                 output.write('\n')
-    print('the tree print level by level is :')
-    print(output.getvalue())
-    print("current tree's depth is %i" % (depth+1))
+    #print('the tree print level by level is :')
+    #print(output.getvalue())
+    #print("current tree's depth is %i" % (depth+1))
 
     # add space to each node
     output.seek(0)
@@ -110,10 +110,10 @@ def pretty_print(tree):
 
         # add space and slashes to middle layer
         slashes_depth = spaces
-        print('current slashes depth im_resize:')
-        print(spaces)
-        print("current levle's list is:")
-        print(keys)
+        #print('current slashes depth im_resize:')
+        #print(spaces)
+        #print("current levle's list is:")
+        #print(keys)
         spaces = spaces // 2
         if spaces > 0:
             pretty_output.write('\n')  # print '\n' each level
@@ -141,9 +141,7 @@ class tree(object):
 
 
 def get_random_tree(num = 10):
-	'''
-	得到值在1~20之间，数量为num的随机二叉树
-	'''
+    # 生成 小于 20的，数量为10的树
     nodes = []
     node1=tree(1)
     node2=tree(2)
@@ -180,7 +178,13 @@ def get_random_tree(num = 10):
             out_nodes[i].right = out_nodes[2*i+2]
         
     
-    return out_nodes[0]
+    return out_nodes[0],lst
+
+
+class node(object):
+	def __init__(self,v):
+		self.data = v
+		self.next = None
 
 
 #pretty_print(get_random_tree(10))
