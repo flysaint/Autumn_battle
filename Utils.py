@@ -12,6 +12,54 @@ import numpy as np
 import random
 import copy
 
+
+class ListNode(object):
+    def __init__(self, x):
+        self.data = x
+        self.next = None
+
+
+class LinkNode(object):
+    def __init__(self,x):
+        self.data = x
+        self.next = None
+
+
+def get_singe_linklist(num = 10):
+    # 生成 小于 20的，数量为10的树
+    LinkNodes = []
+    LinkNode0=LinkNode(0)
+    LinkNode1=LinkNode(1)
+    LinkNode2=LinkNode(2)
+    LinkNode3=LinkNode(3)
+    LinkNode4=LinkNode(4)
+    LinkNode5=LinkNode(5)
+    LinkNode6=LinkNode(6)
+    LinkNode7=LinkNode(7)
+    LinkNode8=LinkNode(8)
+    LinkNode9=LinkNode(9)
+    LinkNode10=LinkNode(10)
+    LinkNode11=LinkNode(11)
+    LinkNode12=LinkNode(12)
+    LinkNode13=LinkNode(13)
+    LinkNode14=LinkNode(14)
+    LinkNode15=LinkNode(15)
+    LinkNode16=LinkNode(16)
+    LinkNode17=LinkNode(17)
+    LinkNode18=LinkNode(18)
+    LinkNode19=LinkNode(19)
+    
+    for i in range(20):
+        LinkNodes.append(eval("LinkNode"+str(i)))
+        
+    lst = [i for i in range(20)]
+    
+    out_LinkNodes = [LinkNodes[i] for i in lst]
+    
+    return out_LinkNodes[:num]
+
+
+
 def get_Arr(cnt):
     
     testArr1 = random.sample(range(cnt),cnt)
@@ -47,17 +95,17 @@ class Queue(object):
         return self.queue == []
 
 
-def getheight(node):
-    if not node:
+def getheight(TreeNode):
+    if not TreeNode:
         return 0
     else:
-        return max(getheight(node.left), getheight(node.right)) + 1
+        return max(getheight(TreeNode.left), getheight(TreeNode.right)) + 1
 
 def add_padding(str, pad_length_value):
     str = str.strip()
     return str.center(pad_length_value, ' ')
 
-# sotre node , space and slashes in list first, then print out
+# sotre TreeNode , space and slashes in list first, then print out
 def pretty_print(tree):
     output = StringIO()
     pretty_output = StringIO()
@@ -68,27 +116,27 @@ def pretty_print(tree):
     depth = 0
 
     # get the depth of current tree
-    # get the tree node data and store in list
+    # get the tree TreeNode data and store in list
     if tree:
         while not current_level.isEmpty():
-            current_node = current_level.dequeue()
-            output.write('%s ' % current_node.data if current_node else 'N ')
+            current_TreeNode = current_level.dequeue()
+            #output.write('%s ' % current_TreeNode.data if current_TreeNode else 'N ')
             next_level.enqueue(
-                current_node.left if current_node else current_node)
+                current_TreeNode.left if current_TreeNode else current_TreeNode)
             next_level.enqueue(
-                current_node.right if current_node else current_node)
+                current_TreeNode.right if current_TreeNode else current_TreeNode)
 
             if current_level.isEmpty():
                 if sum([i is not None for i in next_level.queue]
-                       ):  # if next level has node
+                       ):  # if next level has TreeNode
                     current_level, next_level = next_level, current_level
                     depth = depth + 1
-                output.write('\n')
+                #output.write('\n')
     #print('the tree print level by level is :')
     #print(output.getvalue())
     #print("current tree's depth is %i" % (depth+1))
 
-    # add space to each node
+    # add space to each TreeNode
     output.seek(0)
     pad_length = 3
     keys = []
@@ -133,58 +181,52 @@ def pretty_print(tree):
     print(pretty_output.getvalue())
 
 
-class tree(object):
+class TreeNode(object):
     def __init__(self,x):
         self.data = x
-        self.left = None
-        self.right = None
+        self.next = None
 
 
 def get_random_tree(num = 10):
     # 生成 小于 20的，数量为10的树
-    nodes = []
-    node1=tree(1)
-    node2=tree(2)
-    node3=tree(3)
-    node4=tree(4)
-    node5=tree(5)
-    node6=tree(6)
-    node7=tree(7)
-    node8=tree(8)
-    node9=tree(9)
-    node10=tree(10)
-    node11=tree(11)
-    node12=tree(12)
-    node13=tree(13)
-    node14=tree(14)
-    node15=tree(15)
-    node16=tree(16)
-    node17=tree(17)
-    node18=tree(18)
-    node19=tree(19)
-    node20=tree(20)
+    TreeNodes = []
+    TreeNode0=TreeNode(0)
+    TreeNode1=TreeNode(1)
+    TreeNode2=TreeNode(2)
+    TreeNode3=TreeNode(3)
+    TreeNode4=TreeNode(4)
+    TreeNode5=TreeNode(5)
+    TreeNode6=TreeNode(6)
+    TreeNode7=TreeNode(7)
+    TreeNode8=TreeNode(8)
+    TreeNode9=TreeNode(9)
+    TreeNode10=TreeNode(10)
+    TreeNode11=TreeNode(11)
+    TreeNode12=TreeNode(12)
+    TreeNode13=TreeNode(13)
+    TreeNode14=TreeNode(14)
+    TreeNode15=TreeNode(15)
+    TreeNode16=TreeNode(16)
+    TreeNode17=TreeNode(17)
+    TreeNode18=TreeNode(18)
+    TreeNode19=TreeNode(19)
     
-    for i in range(1,21):
-        nodes.append(eval("node"+str(i)))
+    for i in range(20):
+        TreeNodes.append(eval("TreeNode"+str(i)))
     
     lst = random.sample(range(20),num)
     
-    out_nodes = [nodes[i] for i in lst]
+    out_TreeNodes = [TreeNodes[i] for i in lst]
     
-    for i in range(0,int(len(out_nodes)/2)):
+    for i in range(0,int(len(out_TreeNodes)/2)):
         #print( "i = {},2*i+1 = {},2*i+2 = {}".format(i,2*i+1,2*i+2))
-        out_nodes[i].left = out_nodes[2*i+1]
-        if 2*i+2 < len(out_nodes):
-            out_nodes[i].right = out_nodes[2*i+2]
-        
+        out_TreeNodes[i].left = out_TreeNodes[2*i+1]
+        if 2*i+2 < len(out_TreeNodes):
+            out_TreeNodes[i].right = out_TreeNodes[2*i+2]
     
-    return out_nodes[0],lst
+    return out_TreeNodes[0],lst
 
 
-class node(object):
-	def __init__(self,v):
-		self.data = v
-		self.next = None
 
 
 #pretty_print(get_random_tree(10))
